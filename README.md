@@ -1,2 +1,3 @@
-# dupfiles2
-YouTube: Code 100x Faster with AI, Here's How   Colin Medin
+# Duplicate File Finder
+
+A FastAPI application to scan directories and find duplicate files using SHA-256.

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Duplicate File Finder</title>
+</head>
+<body>
+  <h1>Duplicate File Finder</h1>
+  <form id="scanForm">
+    <input type="text" id="directory" placeholder="Enter directory to scan" />
+    <button type="submit">Scan</button>
+  </form>
+  <pre id="output"></pre>
+  <script>
+    document.getElementById('scanForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const dir = document.getElementById('directory').value;
+      const res = await fetch('/scan', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({path: dir})
+      });
+      const data = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>
